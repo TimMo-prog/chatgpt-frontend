@@ -1,38 +1,219 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
 .App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.chat-header {
+  background-color: #F7F7F7;
+  padding: 15px;
+  font-size: 20px;
+  color: #565869;
+  text-align: center;
+  font-weight: bold;
+  position: relative; 
+}
+
+.chat-window {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  background-color: white;
+}
+
+.message {
+  margin: 10px 0;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.message.user {
+  color: #333;
+}
+
+.message.chatgpt {
+  color: #333;
+}
+
+.chat-input {
+  display: flex;
+  padding: 15px;
+  background-color: RGB(247, 247, 247);
+  border-top: 1px solid RGB(224, 224, 224);
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid RGB(224, 224, 224);
+  border-radius: 20px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.chat-input button {
+  padding: 10px 20px;
+  background-color: #F7F7F7;
+  color: black;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.chat-input button:hover {
+  background-color: #56adf5;
+}
+
+.finish-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: F7F7F7;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.finish-button:hover {
+    background-color: #3498db;
+}
+
+.finish-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f9fc;
+}
+
+.finish-page-content {
+    max-width: 600px;
+    padding: 40px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.finish-page-content h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.finish-page-content ol {
+    font-size: 18px;
+}
+
+.finish-page-content li {
+    margin-bottom: 10px;
+}
+
+
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.popup button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #F7F7F7;
+  color: ;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.popup button:hover {
+  background-color: #3498db;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.task-description-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #F7F7F7;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+.task-description-button:hover {
+    background-color: #3498db;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.message button {
+  margin-left: 10px;
+  background-color: F7F7F7;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.message button:hover {
+  background-color: #3498db;
+}
+
+.popup textarea {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.task-description-frame {
+    border: 2px solid #d3d3d3;  
+    padding: 10px;              
+    margin: 10px 0;            
+    border-radius: 5px;         
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
