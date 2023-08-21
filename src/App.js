@@ -36,113 +36,6 @@ function App() {
 };
 
 
-    useEffect(() => {
-        if (window.LogUI) {
-        let configurationObject = {
-            logUIConfiguration: {
-                endpoint: 'ws://127.0.0.1:8000/ws/endpoint/', 
-                authorisationToken: 'eyJ0eXBlIjoibG9nVUktYXV0aG9yaXNhdGlvbi1vYmplY3QiLCJhcHBsaWNhdGlvbklEIjoiODY0NmZjNmQtMWRkNC00MzJjLTg5N2ItNzcyYmFhNTA1N2NiIiwiZmxpZ2h0SUQiOiJhODQ0M2Q4OS0wNWEzLTQ3NmMtODdjMS0xNTFlYjFlYjNjMDIifQ:1qWiPO:HCc7NVpJskUQ55gJVxgpg4HXg1pXHWnnRqgI2HkYAAI', 
-                verbose: true,
-                browserEvents: {
-                  trackCursor: false,
-                },
-            },
-            applicationSpecificData: {
-                userID: userID, 
-            },
-            trackingConfiguration: {
-                'input-change': {
-                    selector: '.chat-input input',
-                    event: 'keyup',
-                    name: 'INPUT_CHANGE',
-                    metadata: [
-                        {
-                            nameForLog: 'inputValue',
-                            sourcer: 'elementProperty',
-                            lookFor: 'value',
-                        }
-                    ]
-                },
-
-                // Click event
-                'message-send': {
-                    selector: '.chat-input button',
-                    event: 'click',
-                    name: 'MESSAGE_SEND'
-                },
-                'feedback-popup-opened': {
-                    selector: '.feedback-button',
-                    event: 'click',
-                    name: 'FEEDBACK_POPUP_OPENED'
-                },
-                'save-feedback': {
-                    selector: '.feedback-saving-button',
-                    event: 'click',
-                    name: 'FEEDBACK_SAVED',
-                },
-                'task-started': {
-                    selector: '.start-button',
-                    event: 'click',
-                    name: 'TASK_STARTED'
-                },
-                'task-description-viewed': {
-                    selector: '.task-description-button',
-                    event: 'click',
-                    name: 'TASK_DESCRIPTION_VIEWED'
-                },
-                'task-description-closed': {
-                    selector: '.task-description-closed-button',
-                    event: 'click',
-                    name: 'TASK_DESCRIPTION_CLOSED',
-                },
-                'task-completed': {
-                    selector: '.finish-button',
-                    event: 'click',
-                    name: 'TASK_COMPLETED'
-                },
-
-                // Focus event
-                'input-focus': {
-                  selector: '.chat-input input',
-                  event: 'focus',
-                  name: 'INPUT_FOCUSED',
-                },
-                // Self-defined Events
-                'user-message-event': {
-                  selector: '.chat-window',
-                  event: 'userMessageEvent',
-                  name: 'USER_MESSAGE_EVENT',
-                  metadata: [
-                      {
-                          nameForLog: 'latestInput',
-                          sourcer: 'elementProperty',
-                          lookFor: 'value',
-                          onElement: '#latestInput',
-                      }
-                  ]
-                },
-
-              'chatgpt-message-event': {
-                  selector: '.chat-window',
-                  event: 'chatGPTMessageEvent',
-                  name: 'CHATGPT_MESSAGE_EVENT',
-                  metadata: [
-                      {
-                          nameForLog: 'latestChatGPTMessage',
-                          sourcer: 'elementProperty',
-                          lookFor: 'value',
-                          onElement: '#latestChatGPTMessage',
-                      }
-                  ]
-              }
-            },
-        };
-            window.LogUI.init(configurationObject);
-        } else {
-        console.error("LogUI is not available!");
-    }
-    }, [userID]);
-
   // Assigning PROLIFIC_PID to userID
   useEffect(() => {
     if (prolificPid) {
@@ -202,7 +95,7 @@ useEffect(() => {
     setLatestInput(input);
 
     try {
-      const response = await fetch('http://backend:3000/ask', {
+      const response = await fetch('http://localhost:3000/ask', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
