@@ -202,7 +202,7 @@ body, html {
 }
 
 .popup textarea {
-  width: 80%;
+  width: 100%;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #d4d4d4;
@@ -210,10 +210,4 @@ body, html {
   font-size: 16px;
 }
 
-.task-description-frame {
-    border: 2px solid #d3d3d3;  
-    padding: 10px;              
-    margin: 10px 0;            
-    border-radius: 5px;         
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-}
+
